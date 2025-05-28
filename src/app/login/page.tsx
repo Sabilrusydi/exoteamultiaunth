@@ -1,14 +1,14 @@
-&quot;use client&quot;;
+"use client";
 
-import { useRouter } from &quot;next/navigation&quot;;
-import { useState } from &quot;react&quot;;
-import { authenticate } from &quot;@/lib/auth&quot;;
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { authenticate } from "@/lib/auth";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [username, setUsername] = useState(&quot;&quot;);
-  const [password, setPassword] = useState(&quot;&quot;);
-  const [error, setError] = useState(&quot;&quot;);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,57 +22,57 @@ export default function LoginPage() {
 
       // Arahkan sesuai role
       switch (user.role) {
-        case &quot;admin&quot;:
-          router.push(&quot;/dashboard&quot;);
+        case "admin":
+          router.push("/dashboard");
           break;
-        case &quot;kasir&quot;:
-          router.push(&quot;/kasir&quot;);
+        case "kasir":
+          router.push("/kasir");
           break;
-        case &quot;barista&quot;:
-          router.push(&quot;/barista&quot;);
+        case "barista":
+          router.push("/barista");
           break;
-        case &quot;manajer&quot;:
-          router.push(&quot;/manajer&quot;);
+        case "manajer":
+          router.push("/manajer");
           break;
         default:
-          setError(&quot;Role tidak dikenali.&quot;);
+          setError("Role tidak dikenali.");
       }
     } else {
-      setError(&quot;Username atau password salah.&quot;);
+      setError("Username atau password salah.");
     }
   };
 
   return (
-    <div className=&quot;min-h-screen flex items-center justify-center bg-gray-100 p-4&quot;>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <form
         onSubmit={handleLogin}
-        className=&quot;bg-white p-6 rounded shadow-md w-full max-w-sm space-y-4&quot;
+        className="bg-white p-6 rounded shadow-md w-full max-w-sm space-y-4"
       >
-        <h2 className=&quot;text-xl font-bold text-center&quot;>Login Pengguna</h2>
-        <h5 > daftar user : <br /> (username: "admin", password: "admin", role: "admin"), <br />
-     (username: "kasir1", password: "kasir123", role: "kasir"), <br />
-     (username: "barista1", password: "barista123", role: "barista"),<br />
-     (username: "manajer", password: "manajer123", role: "manajer"</h5>
+        <h2 className="text-xl font-bold text-center">Login Pengguna</h2>
+        <h5 > daftar user : <br /> (username: admin password: admin role: admin), <br />
+     (username: kasir1 password: kasir123 role: kasir), <br />
+     (username: barista1 password: barista123 role: barista),<br />
+     (username: manajer password: manajer123 role: manajer)</h5>
         <input
-          type=&quot;text&quot;
-          placeholder=&quot;Username&quot;
-          className=&quot;w-full px-3 py-2 border rounded&quot;
+          type="text"
+          placeholder="Username"
+          className="w-full px-3 py-2 border rounded"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
-          type=&quot;password&quot;
-          placeholder=&quot;Password&quot;
-          className=&quot;w-full px-3 py-2 border rounded&quot;
+          type="password"
+          placeholder="Password"
+          className="w-full px-3 py-2 border rounded"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        {error && <p className=&quot;text-red-500 text-sm&quot;>{error}</p>}
+        {error && <p className="text-red-500 text-sm">{error}</p>}
 
         <button
-          type=&quot;submit&quot;
-          className=&quot;w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700&quot;
+          type="submit"
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
         >
           Login
         </button>
