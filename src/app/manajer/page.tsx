@@ -31,7 +31,7 @@ const laporanBulanan: Laporan[] = [
 
 export default function ManajerPage() {
   const router = useRouter();
-  const [view, setView] = useState<"harian" | "bulanan">("harian");
+  //const [view, setView] = useState<"harian" | "bulanan">("harian");
 
   useEffect(() => {
     const cookies = document.cookie;
